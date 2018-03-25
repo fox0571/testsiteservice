@@ -2,9 +2,9 @@ from django.db import models
 from django.forms import ModelForm
 
 SHIPPING_METHOD = (
-    'NEXT DAY AIR',
-    'SECOND DAY AIR',
-    'GROUND',
+    ('NDA','NEXT DAY AIR'),
+    ('2NDA','SECOND DAY AIR'),
+    ('GROUND','GROUND'),
 )
 
 class Request(models.Model):
@@ -27,7 +27,16 @@ class Request(models.Model):
     part_name=models.CharField(max_length=50)
     part_qty=models.IntegerField()
     req_time=models.DateField(auto_now_add=True)
-    req_statue=models.BooleanField()
+    req_statue=models.NullBooleanField()
+    tracking=models.CharField(max_length=50)
 
     def __str__(self):
         return self.sksid
+
+class RequestForm(ModelForm):
+    class Meta:
+        model = Request
+        fields=['sksid','business_name','serial_number', \
+                'tech_name','ship_add1','ship_add2', \
+                'ship_city','ship_state','ship_zip', \
+                'part_number','part_name','part_qty','ship_method']
