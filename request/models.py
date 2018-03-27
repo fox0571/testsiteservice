@@ -40,3 +40,5 @@ class RequestForm(ModelForm):
                 'tech_name','ship_add1','ship_add2', \
                 'ship_city','ship_state','ship_zip', \
                 'part_number','part_name','part_qty','ship_method']
+    def clean_title(self):
+        return self.cleaned_data['title'].capitalize()

@@ -16,21 +16,30 @@ def req_new(request):
 def submit(request):
     if request.method == "POST":
         form = RequestForm(request.POST)
+        #form.clean_title()
         #if form.is_valid():
         post = form.save()
         post.req_time = timezone.now()
         post.save()
-        request_list = Request.objects.order_by('-req_time')
-        return render(request, 'request/request_detail.html', {'request':request_list})
-        #return redirect('/request')
+        #request_list = Request.objects.order_by('-req_time')
+        #return render(request, 'request/request_detail.html', {'request':request_list})
+        return redirect('/request/all')
     else:
         form = RequestForm()
+    #request_list = Request.objects.order_by('-req_time')
+    #output = ', '.join([q.question_text for q in latest_question_list])
+    #return render(request, 'request/request_detail.html', {'request':request_list})
+    #return render(request, 'request/request.html', {'form': form})
+
+def showAllRequests(request):
     request_list = Request.objects.order_by('-req_time')
     #output = ', '.join([q.question_text for q in latest_question_list])
     return render(request, 'request/request_detail.html', {'request':request_list})
-    #return render(request, 'request/request.html', {'form': form})
 
-def req_list(request):
-    request_list = Request.objects.order_by('-req_time')
-    #output = ', '.join([q.question_text for q in latest_question_list])
+def showPendingRequests(request):
+    request_list = Request.objects.filter(req_statue=False)
+    return render(request, 'request/request_detail.html', {'request':request_list})
+
+def showFinishedRequests(request):
+    request_list = Request.objects.filter(req_statue=True)
     return render(request, 'request/request_detail.html', {'request':request_list})
