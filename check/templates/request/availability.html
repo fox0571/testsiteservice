@@ -1,0 +1,14 @@
+{% extends 'request/base.html' %}
+
+{% block content %}
+
+
+{% if request %}
+    <ul>
+    <li>{{request.number}}   {{request.item}}   {{request.inventory}}</li>
+    </ul>
+{% else %}
+    <p>No requests are available.</p>
+{% endif %}
+
+{% endblock %}
