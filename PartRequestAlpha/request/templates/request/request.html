@@ -1,0 +1,10 @@
+{% extends 'request/base.html' %}
+
+{% block content %}
+    <h1>New Request</h1>
+    <form action="/request/submit/" method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+{% endblock %}

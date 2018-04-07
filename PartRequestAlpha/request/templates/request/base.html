@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>NEW PART REQUEST</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+
+
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="nav">
+                  <a href="/request/all">All</a>
+                  <a href="/request/pending">Pending</a>
+                  <a href="/request/finished">Finished</a>
+                </div>
+                <div class="new">
+                  <a href="/request/new">New Request</a>
+                </div>
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
