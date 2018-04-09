@@ -1,4 +1,4 @@
-{% extends 'request/base.html' %}
+{% extends 'request/checkbase.html' %}
 
 {% block content %}
 
@@ -19,7 +19,9 @@
 
 {% if request %}
     <ul>
-    <li>{{request.number}}   {{request.item}}   {{request.inventory}}</li>
+    <li>PART NUMBER:   {{request.number}}</li>
+    <li>DESCRIPTION:   {{request.item}}</li>
+    <li>IN STOCK:      {{request.inventory}}</li>
     </ul>
 {% else %}
     <p>No requests are available.</p>
