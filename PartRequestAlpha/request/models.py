@@ -23,22 +23,25 @@ STATES = (
     ("TX", "Texas"),("UT", "Utah"),("VT", "Vermont"),("VI", "Virgin Islands"),("VA", "Virginia"),
     ("WA", "Washington"),("WV", "West Virginia"),("WI", "Wisconsin"),("WY", "Wyoming"),
 )
-class Address(models.Model):
+class CommonInfo(models.Model):
+    contact=models.CharField(max_length=50)
     address1=models.CharField(max_length=200)
     address2=models.CharField(max_length=50,blank=True)
     city=models.CharField(max_length=50)
     state=models.CharField(max_length=30,choices=STATES)
     zipCode=models.CharField(max_length=12)
 
-class Person(models.Model):
+    class Meta:
+        abstract=True
+
+class Person(CommonInfo):
     businessName=models.CharField(max_length=200)
-    address=models.ForeignKey(
-        'Address',
-        on_delete=models.CASCADE,
-    )
     contactName=models.CharField(max_length=20,blank=True)
     email=models.EmailField(max_length=254,blank=True)
     phone=models.CharField(max_length=15,blank=True)
+
+    class Meta:
+        abstract=True
     def __str__(self):
         return self.businessName
 
@@ -49,24 +52,12 @@ class Part(models.Model):
     def __str__(self):
         return self.partNumber
 
-class Request(models.Model):
+class Request(CommonInfo):
     SKSID=models.CharField(max_length=30)
     serialNumber=models.CharField(max_length=50)
-    customer=models.ForeignKey(
-        'Person',
-        on_delete=models.CASCADE,
-        related_name='+',
-    )
-    tech=models.ForeignKey(
-        'Person',
-        on_delete=models.CASCADE,
-        related_name='+',
-    )
-    shippingAddress=models.ForeignKey(
-        'Address',
-        on_delete=models.CASCADE,
-        related_name='+',
-    )
+    customer=models.CharField(max_length=100)
+    tech=models.CharField(max_length=100)
+
     shippingMethod=models.CharField(max_length=20,choices=SHIPPING_METHOD,blank=True)
     part=models.ForeignKey(
         'Part',
@@ -85,6 +76,6 @@ class Request(models.Model):
 class RequestForm(ModelForm):
     class Meta:
         model = Request
-        fields=['SKSID','serialNumber','customer.businessName', \
-                'tech','shippingAddress','shippingMethod', \
+        fields=['SKSID','serialNumber','customer','tech','contact','address1', \
+                'address2', 'city', 'state', 'zipCode','shippingMethod', \
                 'part','partQty']
