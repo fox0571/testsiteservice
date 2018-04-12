@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^pending/$', views.showPendingRequests, name='showPending'),
     url(r'^finished/$', views.showFinishedRequests, name='showFinished'),
     url(r'^ship/$', views.req_new, name='req_new'),
+    url(r'^check/$', views.available, name='available'),
 ]

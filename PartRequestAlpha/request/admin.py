@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Part, Request
+from .models import Partsinv, Request
 # Register your models here.
 admin.site.register(Request)
-admin.site.register(Part)
+admin.site.register(Partsinv)

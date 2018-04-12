@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render, redirect
 
-from .models import Request, RequestForm
+from .models import Request, RequestForm, CheckForm, Partsinv
 from django.utils import timezone
 
 def req_new(request):
