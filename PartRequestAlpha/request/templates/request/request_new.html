@@ -1,0 +1,12 @@
+{% extends 'request/request.html' %}
+
+{% block content %}
+
+
+<form action="/request/submit/" method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <button type="submit" class="save btn btn-default">Submit</button>
+</form>
+
+{% endblock %}

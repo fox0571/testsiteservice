@@ -1,18 +1,32 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>NEW PART REQUEST</title>
+        <title>PARTS CENTER</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <style>
+        .page-header{width:1280px;height:50px;float:right}
+        .content-container{width:1280px;height:800px;}
+        .left-side-cont{width:120px;height:800px;float:left}
+        .right-side-cont{width:800px;height:800px;float:left}
+        </style>
     </head>
     <body>
         <div class="page-header">
-
+          <div class="nav">
+            <a href="/request/all">REQUESTS</a>
+            <a href="/request/pending">INVENTORY</a>
+            <a href="/request/finished">PRICE</a>
+          </div>
 
         </div>
-        <div class="content container">
+        <div class="content-container">
+          {% block nav %}
+          {% endblock %}
+        </div>
+        <!--
             <div class="row">
                 <div class="nav">
                   <a href="/request/all">All</a>
@@ -23,11 +37,10 @@
                   <a href="/request/new">New Request</a>
                 </div>
                 <div class="col-md-8">
-                    {% block content %}
-                    {% endblock %}
                 </div>
 
             </div>
         </div>
+      -->
     </body>
 </html>

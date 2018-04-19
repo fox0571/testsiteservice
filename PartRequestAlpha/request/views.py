@@ -6,7 +6,7 @@ from django.utils import timezone
 
 def req_new(request):
     form=RequestForm()
-    return render(request, 'request/request.html',{'form': form})
+    return render(request, 'request/request_new.html',{'form': form})
 
 def submit(request):
     if request.method == "POST":
