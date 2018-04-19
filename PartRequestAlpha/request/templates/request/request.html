@@ -1,10 +1,15 @@
 {% extends 'request/base.html' %}
 
-{% block content %}
-    <h1>New Request</h1>
-    <form action="/request/submit/" method="POST" class="post-form">
-        {% csrf_token %}
-        {{ form.as_ul }}
-        <button type="submit" class="save btn btn-default">Submit</button>
-    </form>
+{% block nav %}
+  <div class="left-side-cont">
+    <a href="/request/new">NEW REQUEST</a>
+    <a href="/request/all">ALL</a>
+    <a href="/request/pending">PENDING</a>
+    <a href="/request/finished">FINISHED</a>
+  </div>
+  <div class="right-side-cont">
+    {% block content %}
+    {% endblock %}
+  </div>
+    
 {% endblock %}
