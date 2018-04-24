@@ -1,9 +1,46 @@
 import datetime
 from django.shortcuts import render, redirect
-
 from .models import Request, RequestForm, CheckForm, Partsinv
 from django.utils import timezone
 
+# @require_http_methods(["GET"])
+# def showAllRequests(request):
+#     response = {}
+#     try:
+#         requests = Request.objects.order_by('-requestTime')
+#         response['list']  = json.loads(serializers.serialize("json", requests))
+#         response['msg'] = 'success'
+#         response['error_num'] = 0
+#     except  Exception,e:
+#         response['msg'] = str(e)
+#         response['error_num'] = 1
+#     return JsonResponse(response)
+#
+# @require_http_methods(["GET"])
+# def showPendingRequests(request):
+#     response = {}
+#     try:
+#         requests = Request.objects.order_by(requestStatue=False)
+#         response['list']  = json.loads(serializers.serialize("json", requests))
+#         response['msg'] = 'success'
+#         response['error_num'] = 0
+#     except  Exception,e:
+#         response['msg'] = str(e)
+#         response['error_num'] = 1
+#     return JsonResponse(response)
+#
+# @require_http_methods(["GET"])
+# def showfinishedRequests(request):
+#     response = {}
+#     try:
+#         requests = Request.objects.order_by(requestStatue=True)
+#         response['list']  = json.loads(serializers.serialize("json", requests))
+#         response['msg'] = 'success'
+#         response['error_num'] = 0
+#     except  Exception,e:
+#         response['msg'] = str(e)
+#         response['error_num'] = 1
+#     return JsonResponse(response)
 def req_new(request):
     form=RequestForm()
     return render(request, 'request/request_new.html',{'form': form})
