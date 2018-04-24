@@ -1,6 +1,7 @@
 body{
   margin: 0px;
   height: 100%;
+  font-family:Monospace;
 }
 html{
   height: 100%;
@@ -14,30 +15,34 @@ html{
 .logo{
   width: 100%;
   height: 120px;
-
+  font-size: 250%;
+  font-family:Monospace;
 }
 .left-nav {
   width: 100%;
   height: 60px;
-  font-size: 100%;
+  font-size: 170%;
+  margin-left: 30px;
   color: #FFFFFF;
+
 }
 .page-right {
   width: 81.25%;
   height:900px;
-  background-color: 666666;
 }
 
 .page-right-nav{
-  background-color: FAFAFA;
+  background-color: #FAFAFA;
   height: 60px;
   width: 100%;
-  display: flex;
 }
 .right-nav{
   height: 60;
-  width: 240px;
-  margin-left: 10px;
+  width: 200px;
+  font-size: 30;
+  float: right;
 }
-.right-nav-blank{
+.page-right-cont{
+  margin-left: 90px;
+  margin-right: auto;
 }

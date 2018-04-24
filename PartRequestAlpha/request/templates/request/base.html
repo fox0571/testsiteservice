@@ -33,22 +33,22 @@
         </div>
         <div class="page-right">
           <div class="page-right-nav">
-
-          </div>
             <div class="right-nav-blank">
             </div>
             <div class="right-nav">
-              NEW
+              <a href="/request/all">ALL</a>
             </div>
             <div class="right-nav">
-              PENDING
+              <a href="/request/finished">FINISHED</a>
+            </div>
+            <div class="right-nav" >
+              <a href="/request/pending">PENDING</a>
             </div>
             <div class="right-nav">
-              FINISHED
+              <a href="/request/new">NEW</a>
             </div>
-            <div class="right-nav">
-              ALL
-            </div>
+          </div>
+
           <div class=page-right-cont>
             {% block content%}
             {% endblock%}
