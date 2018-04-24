@@ -1,0 +1,43 @@
+body{
+  margin: 0px;
+  height: 100%;
+}
+html{
+  height: 100%;
+}
+.page-left {
+  background-color: #4BAAF4;
+  width: 18.75%;
+  height: 100%;
+  float: left;
+}
+.logo{
+  width: 100%;
+  height: 120px;
+
+}
+.left-nav {
+  width: 100%;
+  height: 60px;
+  font-size: 100%;
+  color: #FFFFFF;
+}
+.page-right {
+  width: 81.25%;
+  height:900px;
+  background-color: 666666;
+}
+
+.page-right-nav{
+  background-color: FAFAFA;
+  height: 60px;
+  width: 100%;
+  display: flex;
+}
+.right-nav{
+  height: 60;
+  width: 240px;
+  margin-left: 10px;
+}
+.right-nav-blank{
+}

@@ -1,0 +1,24 @@
+.page-left {
+  background-color: 4BAAF4;
+  width: 18.75%;
+  height: 100%;
+
+}
+.logo{
+  width: 100%;
+  height: 120px;
+
+}
+
+.page-right {
+  width: 81.25%;
+  height: 100%;
+  background-color: 666666;
+}
+
+.page-right-nav{
+  background-color: FAFAFA;
+  height: 60px;
+  width: 100%;
+}
+.page-right-cont

@@ -1,4 +1,4 @@
-{% load static %}
+{% load staticfiles %}
 <html>
     <head>
         <title>PARTS CENTER</title>
@@ -7,7 +7,7 @@
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         -->
-        <link rel="stylesheet" href="{% static "css/index.css" %}">
+        <link rel="stylesheet" href="./index.css">
     </head>
     <body>
         <div class="page-left">
@@ -16,18 +16,6 @@
           </div>
 
           <div class="page-left-nav">
-            <div class="left-nav">
-              REQUESTS
-            </div>
-            <div class="left-nav">
-              INVENTORY
-            </div>
-            <div class="left-nav">
-              PRICE
-            </div>
-            <div class="left-nav">
-              FEEDBACK
-            </div>
           </div>
 
         </div>
@@ -35,20 +23,7 @@
           <div class="page-right-nav">
 
           </div>
-            <div class="right-nav-blank">
-            </div>
-            <div class="right-nav">
-              NEW
-            </div>
-            <div class="right-nav">
-              PENDING
-            </div>
-            <div class="right-nav">
-              FINISHED
-            </div>
-            <div class="right-nav">
-              ALL
-            </div>
+
           <div class=page-right-cont>
             {% block content%}
             {% endblock%}
