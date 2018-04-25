@@ -1,11 +1,48 @@
-{% extends 'request/request.html' %}
+{% extends 'request/base.html' %}
 
 {% block content %}
 
 
 <form action="/request/submit/" method="POST" class="post-form">
     {% csrf_token %}
-    {{ form.as_ul }}
+    <div class="form-group">
+      <ul>
+        <li>BUSINESS INFORMATION</li>
+      </ul>
+      <div class="fieldWrapper">
+        {{ form.businessName.errors }}
+        <label for="{{ form.businessName.id_for_label }}">Business Name:         </label>{{ form.businessName }}
+      </div>
+      <div class="fieldWrapper">
+        {{ form.businessName.errors }}
+        <label for="{{ form.serialNumber.id_for_label }}">Serial Number:            </label>{{ form.serialNumber }}
+      </div>
+      <div class="fieldWrapper">
+        {{ form.issue.errors }}
+        <label for="{{ form.issue.id_for_label }}">Issue Description:</label>{{ form.issue }}
+      </div>
+    </div>
+    <hr class="divide-line">
+    <div class="form-group">
+      <ul>
+        <li>PARTS INFORMATION</li>
+      </ul>
+    </div>
+    <hr class="divide-line">
+    <div class="form-group">
+      <ul>
+        <li>SHIPPING INFORMATION</li>
+      </ul>
+    </div>
+   <label class="control-label">
+       {{ form.SKSID.label_tag }}
+   </label>
+   <div class="">
+       {{ form.SKSID }}
+   </div>
+   {{ form.title.errors }}
+   </div>
+
     <button type="submit" class="save btn btn-default">Submit</button>
 </form>
 
