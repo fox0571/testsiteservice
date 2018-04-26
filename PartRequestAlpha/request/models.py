@@ -23,7 +23,7 @@ STATES = (
     ("TX", "Texas"),("UT", "Utah"),("VT", "Vermont"),("VI", "Virgin Islands"),("VA", "Virginia"),
     ("WA", "Washington"),("WV", "West Virginia"),("WI", "Wisconsin"),("WY", "Wyoming"),
 )
-class CommonInfo(models.Model):
+class Address(models.Model):
     contact=models.CharField(max_length=50)
     address1=models.CharField(max_length=200)
     address2=models.CharField(max_length=50,blank=True)
@@ -40,7 +40,9 @@ class Partsinv(models.Model):
     group_id = models.CharField(db_column='Group_ID', blank=True, null=True,max_length=100)  # Field name made lowercase.
     class_id = models.CharField(db_column='Class_ID', blank=True, null=True,max_length=100)  # Field name made lowercase.
     inventory = models.IntegerField(db_column='Inventory', blank=True, null=True)  # Field name made lowercase.
-
+    low_inv = models.IntegerField(blank=True)
+    high_inv = models.IntegerField(blank=True)
+    location = models.CharField(max_length=20,blank=True)
     def __str__(self):
         return self.number
 
@@ -53,13 +55,14 @@ class CheckForm(ModelForm):
         model = Partsinv
         fields=['number']
 
-class Request(CommonInfo):
+class Request(models.Model):
     SKSID=models.CharField(max_length=30)
     serialNumber=models.CharField(max_length=50)
     businessName=models.CharField(max_length=100)
     tech=models.CharField(max_length=100)
     issue=models.TextField()
     shippingMethod=models.CharField(max_length=20,choices=SHIPPING_METHOD,blank=True)
+    add=models.ForeignKey(Address, on_delete=models.CASCADE)
     part=models.ForeignKey(
         'Partsinv',
         on_delete=models.CASCADE,

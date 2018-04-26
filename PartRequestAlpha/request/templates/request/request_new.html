@@ -10,6 +10,10 @@
         <li>BUSINESS INFORMATION</li>
       </ul>
       <div class="fieldWrapper">
+        {{ form.SKSID.errors }}
+        <label for="{{ form.SKSID.id_for_label }}">Incident Number:</label>{{ form.SKSID }}
+      </div>
+      <div class="fieldWrapper">
         {{ form.businessName.errors }}
         <label for="{{ form.businessName.id_for_label }}">Business Name: </label>{{ form.businessName }}
       </div>
@@ -27,6 +31,10 @@
       <ul>
         <li>PARTS INFORMATION</li>
       </ul>
+      <div class="fieldWrapper">
+        {{ form.issue.errors }}
+        <label for="{{ form.issue.id_for_label }}">Issue Description:</label>{{ form.issue }}
+      </div>
     </div>
     <hr class="divide-line">
     <div class="form-group">
