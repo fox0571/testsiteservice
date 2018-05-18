@@ -23,16 +23,27 @@ STATES = (
     ("TX", "Texas"),("UT", "Utah"),("VT", "Vermont"),("VI", "Virgin Islands"),("VA", "Virginia"),
     ("WA", "Washington"),("WV", "West Virginia"),("WI", "Wisconsin"),("WY", "Wyoming"),
 )
-class Address(models.Model):
+class CommonInfo(models.Model):
     contact=models.CharField(max_length=50)
     address1=models.CharField(max_length=200)
     address2=models.CharField(max_length=50,blank=True)
     city=models.CharField(max_length=50)
     state=models.CharField(max_length=30,choices=STATES)
     zipCode=models.CharField(max_length=12)
-    phone=models.CharField(max_length=15,blank=True)
+
     class Meta:
         abstract=True
+
+class Person(CommonInfo):
+    businessName=models.CharField(max_length=200)
+    contactName=models.CharField(max_length=20,blank=True)
+    email=models.EmailField(max_length=254,blank=True)
+    phone=models.CharField(max_length=15,blank=True)
+
+    class Meta:
+        abstract=True
+    def __str__(self):
+        return self.businessName
 
 class Partsinv(models.Model):
     item = models.CharField(db_column='Item', blank=True, null=True,max_length=100)  # Field name made lowercase.
@@ -40,9 +51,7 @@ class Partsinv(models.Model):
     group_id = models.CharField(db_column='Group_ID', blank=True, null=True,max_length=100)  # Field name made lowercase.
     class_id = models.CharField(db_column='Class_ID', blank=True, null=True,max_length=100)  # Field name made lowercase.
     inventory = models.IntegerField(db_column='Inventory', blank=True, null=True)  # Field name made lowercase.
-    low_inv = models.IntegerField(blank=True)
-    high_inv = models.IntegerField(blank=True)
-    location = models.CharField(max_length=20,blank=True)
+
     def __str__(self):
         return self.number
 
@@ -54,15 +63,20 @@ class CheckForm(ModelForm):
     class Meta:
         model = Partsinv
         fields=['number']
+# class Part(models.Model):
+#     partNumber=models.CharField(max_length=20)
+#     partName=models.CharField(max_length=50)
+#     partInventory=models.IntegerField()
+#     def __str__(self):
+#         return self.partNumber
 
-class Request(models.Model):
+class Request(CommonInfo):
     SKSID=models.CharField(max_length=30)
     serialNumber=models.CharField(max_length=50)
-    businessName=models.CharField(max_length=100)
+    customer=models.CharField(max_length=100)
     tech=models.CharField(max_length=100)
-    issue=models.TextField()
+
     shippingMethod=models.CharField(max_length=20,choices=SHIPPING_METHOD,blank=True)
-    add=models.ForeignKey(Address, on_delete=models.CASCADE)
     part=models.ForeignKey(
         'Partsinv',
         on_delete=models.CASCADE,
@@ -80,6 +94,6 @@ class Request(models.Model):
 class RequestForm(ModelForm):
     class Meta:
         model = Request
-        fields=['SKSID','serialNumber','tech','contact','address1', \
+        fields=['SKSID','serialNumber','customer','tech','contact','address1', \
                 'address2', 'city', 'state', 'zipCode','shippingMethod', \
-                'businessName','part','partQty','issue']
+                'part','partQty']
