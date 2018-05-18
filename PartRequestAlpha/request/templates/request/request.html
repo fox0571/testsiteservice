@@ -1,15 +1,10 @@
-{% extends 'request/base.html' %}
+{% extends 'request/index.html' %}
 
 {% block nav %}
-  <div class="left-side-cont">
-    <a href="/request/new">NEW REQUEST</a>
-    <a href="/request/all">ALL</a>
-    <a href="/request/pending">PENDING</a>
-    <a href="/request/finished">FINISHED</a>
-  </div>
+  
   <div class="right-side-cont">
     {% block content %}
     {% endblock %}
   </div>
-    
+
 {% endblock %}

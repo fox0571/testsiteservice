@@ -1,4 +1,4 @@
-{% extends 'request/base.html' %}
+{% extends 'request/index.html' %}
 
 {% block content %}
 
@@ -7,7 +7,7 @@
     {% for r in request %}
 
       <li>{{r.requestTime}}   {{r.SKSID}}   {{r.tracking}}</li>
-      
+
     {% endfor %}
 {% else %}
     <p>No requests are available.</p>
