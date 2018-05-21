@@ -1,7 +1,8 @@
 import datetime
 from django.shortcuts import render, redirect
-from .models import Request, RequestForm, CheckForm, Partsinv
+from .models import Request, CheckForm, Partsinv
 from django.utils import timezone
+from .forms import RequestForm
 
 # @require_http_methods(["GET"])
 # def showAllRequests(request):

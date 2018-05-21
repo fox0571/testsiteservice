@@ -62,7 +62,7 @@ class Request(models.Model):
     tech=models.CharField(max_length=100)
     issue=models.TextField()
     shippingMethod=models.CharField(max_length=20,choices=SHIPPING_METHOD,blank=True)
-    add=models.ForeignKey(Address, on_delete=models.CASCADE)
+    #add=models.ForeignKey(Address, on_delete=models.CASCADE)
     part=models.ForeignKey(
         'Partsinv',
         on_delete=models.CASCADE,
@@ -80,6 +80,7 @@ class Request(models.Model):
 class RequestForm(ModelForm):
     class Meta:
         model = Request
-        fields=['SKSID','serialNumber','tech','contact','address1', \
-                'address2', 'city', 'state', 'zipCode','shippingMethod', \
-                'businessName','part','partQty','issue']
+        fields='__all__'
+        # ['SKSID','serialNumber','tech','contact','add', \
+        #         'shippingMethod', \
+        #         'businessName','part','partQty','issue']

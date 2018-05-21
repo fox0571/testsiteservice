@@ -11,17 +11,11 @@
     <th>TRACKING</th>
   </tr>
     {% for r in request %}
-<<<<<<< HEAD
-
-      <li>{{r.requestTime}}   {{r.SKSID}}   {{r.tracking}}</li>
-
-=======
       <tr>
         <th>{{r.requestTime}}</th>
         <th>{{r.SKSID}}</th>
         <th>{{r.tracking}}</th>
       </tr>
->>>>>>> f2346cb8254bcee573cff63fa4f8c8e1271b051d
     {% endfor %}
 </table>
 {% else %}
